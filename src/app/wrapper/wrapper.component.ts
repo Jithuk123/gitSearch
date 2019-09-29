@@ -9,7 +9,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   templateUrl: './wrapper.component.html',
   styleUrls: ['./wrapper.component.css']
 })
-export class WrapperComponent implements OnInit {
+export class WrapperComponent implements OnInit{
 
   success: boolean;
 
