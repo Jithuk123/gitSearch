@@ -33,8 +33,17 @@ export class WrapperComponent implements OnInit {
           timeOut: 3000
         });
       });
-    localStorage.setItem('dataSource', this.input);
-    console.log(localStorage.getItem('dataSource'));
+    // localStorage.setItem('dataSource', this.input);
+    // console.log(localStorage.getItem('dataSource'));
+    localStorage.getItem(this.input);
+      JSON.parse( localStorage.getItem(this.input));
+    
+    // else {
+    //   localStorage.setItem('dataSource', this.input);
+    //   console.log(localStorage.getItem('dataSource'));
+      // localStorage.setItem(this.input, JSON.stringify(this.value));
+      // console.log(localStorage);
+
 
   }
 
