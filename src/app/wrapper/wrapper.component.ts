@@ -27,7 +27,7 @@ export class WrapperComponent implements OnInit {
       
     } else {
       this.success = false;
-      this.httpClient.get(this.baseUrl + this.input + `?access_token=a839e8d6a73d36f991c2e52ac5fb7e389427e511`).subscribe((res) => {
+      this.httpClient.get(this.baseUrl + this.input ).subscribe((res) => {
       this.success = true;
       this.value = res;
       localStorage.setItem('dataSource', this.input);
