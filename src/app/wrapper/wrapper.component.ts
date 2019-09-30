@@ -9,7 +9,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   templateUrl: './wrapper.component.html',
   styleUrls: ['./wrapper.component.css']
 })
-export class WrapperComponent implements OnInit{
+export class WrapperComponent implements OnInit {
 
   success: boolean;
 
@@ -21,11 +21,19 @@ export class WrapperComponent implements OnInit{
 
 
   getDetails() {
-    this.success = false;
-
-    this.httpClient.get(this.baseUrl + this.input + `?access_token=a839e8d6a73d36f991c2e52ac5fb7e389427e511`).subscribe((res) => {
+ 
+    if (localStorage.getItem(this.input)) {
+      this.value = JSON.parse(localStorage.getItem(this.input));
+      
+    } else {
+      this.success = false;
+      this.httpClient.get(this.baseUrl + this.input + `?access_token=a839e8d6a73d36f991c2e52ac5fb7e389427e511`).subscribe((res) => {
       this.success = true;
       this.value = res;
+      localStorage.setItem('dataSource', this.input);
+      console.log(localStorage.getItem('dataSource'));
+      localStorage.setItem(this.input, JSON.stringify(this.value));
+      console.log(localStorage);
     },
 
       () => {
@@ -35,16 +43,9 @@ export class WrapperComponent implements OnInit{
       });
     // localStorage.setItem('dataSource', this.input);
     // console.log(localStorage.getItem('dataSource'));
-    localStorage.getItem(this.input);
-      JSON.parse( localStorage.getItem(this.input));
     
-    // else {
-    //   localStorage.setItem('dataSource', this.input);
-    //   console.log(localStorage.getItem('dataSource'));
-      // localStorage.setItem(this.input, JSON.stringify(this.value));
-      // console.log(localStorage);
-
-
+    // }
+  }
   }
 
   ngOnInit() {
